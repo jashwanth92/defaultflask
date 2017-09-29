@@ -5,7 +5,7 @@ import json, ast
 app = Flask(__name__)
 
 app.config['MONGO_DBNAME'] ='testingmongo'
-app.config['MONGO_URI']='mongodb://arjun:arjun123@ds011863.mlab.com:11863/testingmongo'
+app.config['MONGO_URI']='mongodb://****************/testingmongo'
 
 mongo = PyMongo(app)
 
