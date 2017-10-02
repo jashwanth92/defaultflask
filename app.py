@@ -1,25 +1,20 @@
 from flask import Flask
-from flask_pymongo import PyMongo
-import json, ast
+from flask_prometheus import monitor
+import json
 
 app = Flask(__name__)
 
-app.config['MONGO_DBNAME'] ='testingmongo'
-app.config['MONGO_URI']='mongodb://arjun:arjun123@ds011863.mlab.com:11863/testingmongo'
 
-mongo = PyMongo(app)
+@app.route('/test', methods=['GET'])
+def test():
 
-
-@app.route('/awss',methods =['GET'] )
-def addone():
-    # GET from mongo
-    users = mongo.db.users
-    response = users.find_one({},{'_id': False})
-    response = ast.literal_eval(json.dumps(response))
+    response = {"words": "testing"}
     r = json.dumps(response)
     return r
 
 
 
 if __name__ == '__main__':
-    app.run(host = '0.0.0.0' , port=5000)
+    monitor(app, port=8000)   # monitor using with prometheus 
+    app.run(host='0.0.0.0', port=5000) 
+  
