@@ -7,3 +7,12 @@ services:
        - "5000:5000"
     volumes:
        - .:/code
+       
+  met:
+    build: .
+    image: qpair/metrics
+    ports:
+       - "8000:8000"
+    volumes:
+       - .:/code
+ 
