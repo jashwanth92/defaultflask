@@ -14,7 +14,7 @@ RUN pip install flask_pymongo
 
 RUN pip install pymongo
 
-pip install flask_prometheus
+RUN pip install flask_prometheus
 
 WORKDIR /home/ubuntu/flaskapp
 
